@@ -147,6 +147,7 @@ __attribute__((swift_name("Greeting")))
 @interface SharedGreeting : SharedBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
+- (int32_t)doSomethingCool __attribute__((swift_name("doSomethingCool()")));
 - (NSString *)greet __attribute__((swift_name("greet()")));
 @end
 
