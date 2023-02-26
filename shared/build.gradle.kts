@@ -62,6 +62,7 @@ android {
     }
 }
 
+addGithubPackagesRepository()
 kmmbridge {
     mavenPublishArtifacts()
     githubReleaseVersions()
