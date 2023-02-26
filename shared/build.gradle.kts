@@ -5,17 +5,7 @@ plugins {
 }
 
 kotlin {
-    multiplatformSwiftPackage {
-        swiftToolsVersion("5.3")
-        targetPlatforms {
-            iOS { v("13") }
-        }
-        packageName("shared")
-        outputDirectory(File(rootDir, "/"))
-    }
-
     android()
-
     ios {
         binaries {
             framework {
@@ -44,6 +34,15 @@ kotlin {
             dependsOn(iosTest)
         }
     }
+}
+
+multiplatformSwiftPackage {
+    swiftToolsVersion("5.3")
+    targetPlatforms {
+        iOS { v("13") }
+    }
+    packageName("shared")
+    outputDirectory(File(rootDir, "/"))
 }
 
 android {
