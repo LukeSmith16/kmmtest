@@ -2,6 +2,7 @@ plugins {
     kotlin("multiplatform")
     id("com.android.library")
     id("co.touchlab.faktory.kmmbridge") version "0.3.5"
+    `maven-publish`
 }
 
 kotlin {
