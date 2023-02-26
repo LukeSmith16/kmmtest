@@ -1,24 +1,21 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let packageName = "shared"
-
 let package = Package(
-    name: packageName,
+    name: "shared",
     platforms: [
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: packageName,
-            targets: [packageName]
+            name: "shared",
+            targets: ["shared"]
         ),
     ],
     targets: [
         .binaryTarget(
-            name: packageName,
-            path: "./shared/build/XCFrameworks/debug/\(packageName).xcframework"
-        )
-        ,
+            name: "shared",
+            path: "./shared.xcframework"
+        ),
     ]
 )

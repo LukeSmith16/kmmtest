@@ -1,8 +1,7 @@
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
-    id("co.touchlab.faktory.kmmbridge") version "0.3.5"
-    `maven-publish`
+    id("io.github.luca992.multiplatform-swiftpackage") version "2.1.1"
 }
 
 kotlin {
@@ -53,6 +52,14 @@ kotlin {
             iosSimulatorArm64Test.dependsOn(this)
         }
     }
+
+    multiplatformSwiftPackage {
+        swiftToolsVersion("5.3")
+        targetPlatforms {
+            iOS { v("13") }
+        }
+        outputDirectory(File(rootDir, "/"))
+    }
 }
 
 android {
@@ -62,16 +69,4 @@ android {
         minSdk = 24
         targetSdk = 33
     }
-}
-
-addGithubPackagesRepository()
-
-kmmbridge {
-    mavenPublishArtifacts()
-    githubReleaseVersions()
-//    Android version is not automatically incremented in KMMBridge, so if you need it to be aligned with the iOS version
-//    use manualVersions instead of githubReleaseVersions to set version manually
-//    manualVersions()
-    spm()
-//    cocoapods("git@github.com:touchlab/PodSpecs.git")
 }
