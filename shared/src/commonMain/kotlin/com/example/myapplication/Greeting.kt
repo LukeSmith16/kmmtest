@@ -10,4 +10,8 @@ class Greeting {
     fun doSomethingCool(): Int {
         return 12
     }
+
+    fun anotherMethods() {
+
+    }
 }

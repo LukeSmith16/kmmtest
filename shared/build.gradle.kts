@@ -10,7 +10,7 @@ kotlin {
         binaries {
             framework {
                 baseName = "shared"
-                isStatic = false
+                isStatic = true
             }
         }
     }
@@ -19,7 +19,7 @@ kotlin {
         binaries {
             framework {
                 baseName = "shared"
-                isStatic = false
+                isStatic = true
             }
         }
     }
@@ -37,12 +37,13 @@ kotlin {
 }
 
 multiplatformSwiftPackage {
-    swiftToolsVersion("5.3")
+    swiftToolsVersion("5.7.0")
     targetPlatforms {
-        iOS { v("13") }
+        iOS { v("15") }
     }
     packageName("shared")
     outputDirectory(File(rootDir, "/"))
+    distributionMode { local() }
 }
 
 android {
