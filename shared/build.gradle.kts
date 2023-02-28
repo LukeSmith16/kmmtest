@@ -6,7 +6,8 @@ plugins {
 
 kotlin {
     android()
-    iosX64 {
+
+    ios {
         binaries {
             framework {
                 baseName = "shared"
@@ -15,23 +16,17 @@ kotlin {
         }
     }
 
-    iosArm64 {
-        binaries {
-            framework {
-                baseName = "shared"
-                isStatic = true
-            }
-        }
-    }
+    iosSimulatorArm64()
+    iosArm64()
 
     sourceSets {
-        val commonMain by getting
-        val iosX64Main by getting
-        val iosArm64Main by getting
-        val iosMain by creating {
-            dependsOn(commonMain)
-            iosX64Main.dependsOn(this)
-            iosArm64Main.dependsOn(this)
+        val iosMain by getting
+        val iosTest by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
+        val iosSimulatorArm64Test by getting {
+            dependsOn(iosTest)
         }
     }
 }
