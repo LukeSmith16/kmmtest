@@ -6,43 +6,44 @@ plugins {
 
 kotlin {
     android()
-    ios {
+    iosX64 {
         binaries {
             framework {
                 baseName = "shared"
-                isStatic = false
+                isStatic = true
             }
         }
     }
 
-    iosSimulatorArm64 {
+    iosArm64 {
         binaries {
             framework {
                 baseName = "shared"
-                isStatic = false
+                isStatic = true
             }
         }
     }
 
     sourceSets {
-        val iosMain by getting
-        val iosTest by getting
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
-        }
-        val iosSimulatorArm64Test by getting {
-            dependsOn(iosTest)
+        val commonMain by getting
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
         }
     }
 }
 
 multiplatformSwiftPackage {
-    swiftToolsVersion("5.3")
+    swiftToolsVersion("5.7.0")
     targetPlatforms {
-        iOS { v("13") }
+        iOS { v("15") }
     }
     packageName("shared")
     outputDirectory(File(rootDir, "/"))
+    distributionMode { local() } // Where will we look for the XCFramework.
 }
 
 android {

@@ -10,4 +10,8 @@ class Greeting {
     fun doSomethingCool(): Int {
         return 12
     }
+
+    fun someCrazyValidationLogic(someCrazyString: String): Boolean {
+        return someCrazyString.count() >= 5
+    }
 }

@@ -1,10 +1,10 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.7.0
 import PackageDescription
 
 let package = Package(
     name: "shared",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
